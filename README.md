@@ -12,4 +12,4 @@ Parts of assignment
 Testing
 --------------
 Doing initial BDD with RSpec and SWIG in the /spec folder and using
-CppUnitLite to satisfy UnitTesting for the assignment.
+CppUnitLite to satisfy Unit Testing for the assignment.

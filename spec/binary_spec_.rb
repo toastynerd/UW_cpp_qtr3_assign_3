@@ -1,6 +1,6 @@
 #binary_spec.rb
 
-require 'binary'
+require 'Binary'
 
 describe Binary do
 

@@ -11,5 +11,7 @@ Parts of assignment
 
 Testing
 --------------
-Doing initial BDD with RSpec and SWIG in the /spec folder and using
-CppUnitLite to satisfy Unit Testing for the assignment.
+  *  Tried using RSpec and SWIG to do bdd but did not work
+  *  Experimented with cppspec but was taking too much time
+  *  Back to unit testing with CppUnitLite 
+

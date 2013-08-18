@@ -1,6 +1,7 @@
 CC=g++
 
 test: 
+	${LITTLE_ENDIAN}
 	$(CC) -o run_tests CppUnitLite/Main.cpp \
 										 CppUnitLite/Failure.cpp \
 										 CppUnitLite/Test.cpp \

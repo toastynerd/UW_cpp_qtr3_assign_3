@@ -1,6 +1,7 @@
 #include <iostream>
 #include "TestHarness.h"
 #include "../Binary.h"
+#include "../WindowsBitmapHeader.h"
 #include <sstream>
 
 
@@ -135,6 +136,23 @@ TEST(WriteDoubleWord, DoubleWord)
 
   actual = Binary::DoubleWord::readBigEndian(ss2);
   CHECK_EQUAL(expected, actual);
+}
 
+TEST(WindowsBitmapHeader_init, WindowsBitmapHeader)
+{
+  //used for development to make sure one of these
+  //can actually be created
+  Bitmap::WindowsBitmapHeader wbmh1(10,10);
+  int expected = 54 + (10*10)*3;
+  CHECK_EQUAL(expected, wbmh1.size())
+}
+
+TEST(WindowsBitmapHeader_write, WindowsBitmapHeader)
+{
+
+}
+
+TEST(WBMH_read, WindowsBitmapHeader)
+{
 
 }

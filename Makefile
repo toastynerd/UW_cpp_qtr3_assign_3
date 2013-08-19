@@ -8,6 +8,7 @@ test:
 										 CppUnitLite/TestRegistry.cpp \
 										 CppUnitLite/TestResult.cpp \
 										 CppUnitLite/BitMapAssign3Test.cpp \
-										 Binary.cpp
+										 Binary.cpp \
+										 WindowsBitmapHeader.cpp \
 	
 	./run_tests

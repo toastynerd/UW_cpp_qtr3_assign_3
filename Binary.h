@@ -1,6 +1,7 @@
 //Tyler Morgan
 //Word.h
 //
+#pragma once
 #include <iostream>
 
 namespace Binary

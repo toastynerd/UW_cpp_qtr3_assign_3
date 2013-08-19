@@ -10,5 +10,7 @@ test:
 										 CppUnitLite/BitMapAssign3Test.cpp \
 										 Binary.cpp \
 										 WindowsBitmapHeader.cpp \
+										 Color.cpp \
+										 Bitmap.cpp
 	
 	./run_tests

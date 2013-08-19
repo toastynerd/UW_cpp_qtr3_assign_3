@@ -12,11 +12,11 @@ namespace Bitmap
     WindowsBitmapHeader(int width, int height);
     WindowsBitmapHeader(Binary::DoubleWord width, Binary::DoubleWord height, Binary::DoubleWord file_size);
     WindowsBitmapHeader& operator =(WindowsBitmapHeader const& original);
-    WindowsBitmapHeader& operator =(int width, height, file_size);
-    WindowsBitmapHeader& operator =(Binary::DoubleWord width, Binary::DoubleWord height, Binary::DoubleWord file_size);
     void writeFileHeader(std::ostream& destinationStream);
-    WindowsBitmapHeader readFileHeader(std::istream& inputStream);
+    static WindowsBitmapHeader readFileHeader(std::istream& inputStream);
     int size();
+    int getWidth();
+    int getHeight();
 
   private:
     //file header

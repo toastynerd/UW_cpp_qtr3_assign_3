@@ -1,7 +1,10 @@
 #include <iostream>
+#include <fstream>
 #include "TestHarness.h"
 #include "../Binary.h"
 #include "../WindowsBitmapHeader.h"
+#include "../Color.h"
+#include "../Bitmap.h"
 #include <sstream>
 
 
@@ -147,12 +150,27 @@ TEST(WindowsBitmapHeader_init, WindowsBitmapHeader)
   CHECK_EQUAL(expected, wbmh1.size())
 }
 
-TEST(WindowsBitmapHeader_write, WindowsBitmapHeader)
+TEST(WindowsBitmapHeader_write_read, WindowsBitmapHeader)
 {
+  std::stringstream ss;
+  Bitmap::WindowsBitmapHeader wbmh1(10,10);
+  wbmh1.writeFileHeader(ss);
+  Bitmap::WindowsBitmapHeader wbmh2(5,5);
+  wbmh2 = Bitmap::WindowsBitmapHeader::readFileHeader(ss);
 
+  CHECK_EQUAL(wbmh1.size(), wbmh2.size()); 
 }
 
-TEST(WBMH_read, WindowsBitmapHeader)
+TEST(Bitmap_assignment, Bitmap)
 {
+  Bitmap::WindowsBitmapHeader header(100,100);
+  Bitmap::Bitmap bitmap1(header);
+}
 
+TEST(Bitmap_read, bitmap)
+{
+  std::ifstream basic_bitmap("basic.bmp",std::ios::in | std::ios::binary);
+  std::ofstream out("rewritten.bmp", std::ios::out | std::ios::binary);
+  Bitmap::Bitmap bitmap(basic_bitmap);
+  bitmap.write(out);
 }

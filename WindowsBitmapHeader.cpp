@@ -33,9 +33,12 @@ namespace Bitmap
 
   }
 
-  int WindowsBitmapHeader::size()
+  WindowsBitmapHeader& WindowsBitmapHeader::operator =(WindowsBitmapHeader const& original)
   {
-    return fileSize;
+    this->bitmapHeight = original.bitmapHeight;
+    this->bitmapWidth = original.bitmapWidth;
+    this->fileSize = original.fileSize;
+    return *this;
   }
 
   void WindowsBitmapHeader::writeFileHeader(std::ostream& destinationStream) 
@@ -62,12 +65,12 @@ namespace Bitmap
   {
     firstIdentifier.read(inputStream);
     secondIdentifier.read(inputStream);
-    Binary::DoubleWord file_size = fileSize.readLittleEndian(inputStream);
+    Binary::DoubleWord file_size = Binary::DoubleWord::readLittleEndian(inputStream);
     reserved.readLittleEndian(inputStream);
     rawImageByteOffset.readLittleEndian(inputStream);
     infoHeaderBytes.readLittleEndian(inputStream);
-    Binary::DoubleWord width = bitmapWidth.readLittleEndian(inputStream);
-    Binary::DoubleWord height = bitmapHeight.readLittleEndian(inputStream);
+    Binary::DoubleWord width = Binary::DoubleWord::readLittleEndian(inputStream);
+    Binary::DoubleWord height = Binary::DoubleWord::readLittleEndian(inputStream);
     numberOfPlanes.readLittleEndian(inputStream);
     bitsPerPixel.readLittleEndian(inputStream);
     compressionType.readLittleEndian(inputStream);
@@ -81,4 +84,18 @@ namespace Bitmap
     return header;
   }
 
+  int WindowsBitmapHeader::size()
+  {
+    return fileSize;
+  }
+
+  int WindowsBitmapHeader::getWidth()
+  {
+    return bitmapWidth;
+  }
+
+  int WindowsBitmapHeader::getHeight()
+  {
+    return bitmapHeight;
+  }
 }
